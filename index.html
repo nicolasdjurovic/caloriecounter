@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <table>
+            <thead>
+                <tt>Description</tt>
+                <tt>Calories</tt>
+                <tt>Fat</tt>
+                <tt>Carbs</tt>
+                <tt>Protein</tt>
+            </thead>
+            <tbody>
+                <tr v-for="(product, index) in productList">
+                    <td><input type="text" v-bind:value="product.name"></td>
+                    <td><input type="number" v-model="product.cal" v-on:keyup="dataChanged"></td>
+                    <td><input type="number" v-model="product.fat" v-on:keyup="dataChanged"></td>
+                    <td><input type="number" v-model="product.car" v-on:keyup="dataChanged"></td>
+                    <td><input type="number" v-model="product.pro" v-on:keyup="dataChanged"></td>
+                    <td><button @click="removeProd(index)">x</button></td>  
+                </tr>
+            </tbody>
+        </table>
+        <div class="totals">Totals:
+            <span>{{totalsCalc.cal}}</span>
+            <span>{{totalsCalc.fat}}</span>
+            <span>{{totalsCalc.car}}</span>
+            <span>{{totalsCalc.pro}}</span>
+        </div>
+        <div class="new">
+            <input type="text" placeholder="product name" v-model="newProd.name">
+            <input type="number" placeholder="calories" v-model="newProd.cal">
+            <input type="number" placeholder="fat" v-model="newProd.fat">
+            <input type="number" placeholder="carbs" v-model="newProd.car">
+            <input type="number" placeholder="protein" v-model="newProd.pro">
+            <button @click="addNewProd">+</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
